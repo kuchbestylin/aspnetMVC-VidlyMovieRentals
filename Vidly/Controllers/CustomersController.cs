@@ -1,30 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Vidly.Models;
+using Microsoft.EntityFrameworkCore;
+using Vidly.Data;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly ApplicationDbContext _db;
+        public CustomersController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            //base.Dispose(disposing);
+            _db.Dispose();
+        }
+
         public IActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _db.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
 
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _db.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null) return NotFound();
             return View(customer);
-        }
-
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new[]
-            {
-                new Customer { Id = 1, Name = "John Smith" },
-                new Customer { Id = 2, Name = "Mary Williams" }
-            };
         }
     }
 }

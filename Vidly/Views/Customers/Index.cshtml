@@ -1,0 +1,33 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customers</h1>
+<table style="width:100%">
+    <thead class="border-bottom">
+        <tr>
+            <th>
+                <strong>customers</strong>
+            </th>
+            <th>
+                <strong>Discount Rete</strong>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Customers" asp-action="Details" asp-route-id="@customer.Id">@customer.Name</a>
+                </td>
+                <td>
+                    <a>@customer.MembershipType.DiscountRate%</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
