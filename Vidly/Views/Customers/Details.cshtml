@@ -1,8 +1,14 @@
 ﻿@model Customer
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>@Model.Name</h1>
-
+<ul>
+	<li>Membership Type: @Model.MembershipType.Name</li>
+	@if (Model.Birthdate != null)
+	{
+		<li>Birth Date: @Model.Birthdate.Value.ToShortDateString()</li>
+	}
+</ul>

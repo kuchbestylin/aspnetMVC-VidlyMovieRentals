@@ -12,7 +12,7 @@
                 <strong>customers</strong>
             </th>
             <th>
-                <strong>Discount Rete</strong>
+                <strong>Membership Type</strong>
             </th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
                     <a asp-controller="Customers" asp-action="Details" asp-route-id="@customer.Id">@customer.Name</a>
                 </td>
                 <td>
-                    <a>@customer.MembershipType.DiscountRate%</a>
+                    <a>@customer.MembershipType.Name</a>
                 </td>
             </tr>
         }
