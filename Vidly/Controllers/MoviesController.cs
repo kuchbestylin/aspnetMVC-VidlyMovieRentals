@@ -22,5 +22,10 @@ namespace Vidly.Controllers
             var movie = _dbContext.Movies.FirstOrDefault(x => x.Id == id);
             return View(movie);
         }
+
+        public IActionResult New()
+        {
+            return View();
+        }
     }
 }
