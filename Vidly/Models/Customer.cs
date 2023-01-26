@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vidly.Models
 {
@@ -12,7 +13,7 @@ namespace Vidly.Models
         [Required]
         [StringLength(100)]
         [Display(Name = "First Name")]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
 
         public bool IsSubscribedToNewsLetter { get; set; }
@@ -24,9 +25,10 @@ namespace Vidly.Models
 
 
 
-        [Required]
         [Display(Name = "Membership Type")]
-        public MembershipType? MembershipType { get; set; }
+        [ForeignKey("MembershipType")]
+        public int MembershipTypeId { get; set; }
+        public MembershipType MembershipType { get; set; }
 
 
     }

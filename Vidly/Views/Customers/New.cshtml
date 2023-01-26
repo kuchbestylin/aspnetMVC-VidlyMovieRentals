@@ -23,7 +23,7 @@
         </div>
         <div class="mt-2 form-group">
             @Html.LabelFor(m => m.Customer.MembershipType)
-            @Html.DropDownListFor(m => m.Customer.MembershipType, new SelectList(Model.MembershipTypes, "Id", "Name"),"Select Membership Type", new { @class = "form-select"})
+            @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"),"Select Membership Type", new { @class = "form-select"})
         </div>
         <button type="Submit" class="btn mt-2 btn-primary">Save</button>
     </div>
