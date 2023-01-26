@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Data;
 
@@ -11,9 +12,11 @@ using Vidly.Data;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230125182446_replacingZerosforOtherValuesInStockForMoviesSeed")]
+    partial class replacingZerosforOtherValuesInStockForMoviesSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +77,7 @@ namespace Vidly.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MembershipTypes");
+                    b.ToTable("MembershipType");
 
                     b.HasData(
                         new
@@ -146,7 +149,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 1,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8117),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4303),
                             Genre = "Romance",
                             Name = "A Perfect Match",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -155,7 +158,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 2,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8149),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4336),
                             Genre = "Adventure",
                             Name = "Jumanji",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -164,7 +167,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 3,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8160),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4346),
                             Genre = "Mistery",
                             Name = "A Resonable Doubt",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -173,7 +176,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 4,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8171),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4355),
                             Genre = "Romance",
                             Name = "Brown Coffee",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -182,7 +185,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 5,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8181),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4364),
                             Genre = "Thriller",
                             Name = "Most Wanted",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -191,7 +194,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 6,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8191),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4373),
                             Genre = "Thriller",
                             Name = "The Maze Runner",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -200,7 +203,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 7,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8201),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4382),
                             Genre = "Scify",
                             Name = "Blade Runner",
                             Release = new DateTime(2017, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -209,7 +212,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 8,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8211),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4392),
                             Genre = "Action",
                             Name = "13 Hours the Secret Soldier",
                             Release = new DateTime(2012, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -218,7 +221,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 9,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8222),
+                            Added = new DateTime(2023, 1, 25, 20, 24, 45, 694, DateTimeKind.Local).AddTicks(4401),
                             Genre = "Action",
                             Name = "The Matrix Ressurection",
                             Release = new DateTime(1994, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),

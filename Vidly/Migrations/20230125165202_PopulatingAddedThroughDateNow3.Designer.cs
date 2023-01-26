@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Data;
 
@@ -11,9 +12,11 @@ using Vidly.Data;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230125165202_PopulatingAddedThroughDateNow3")]
+    partial class PopulatingAddedThroughDateNow3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +77,7 @@ namespace Vidly.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MembershipTypes");
+                    b.ToTable("MembershipType");
 
                     b.HasData(
                         new
@@ -120,7 +123,6 @@ namespace Vidly.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Added")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Genre")
@@ -146,83 +148,74 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 1,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8117),
                             Genre = "Romance",
                             Name = "A Perfect Match",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 5
+                            Stock = 0
                         },
                         new
                         {
                             Id = 2,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8149),
                             Genre = "Adventure",
                             Name = "Jumanji",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 4
+                            Stock = 0
                         },
                         new
                         {
                             Id = 3,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8160),
                             Genre = "Mistery",
                             Name = "A Resonable Doubt",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 55
+                            Stock = 0
                         },
                         new
                         {
                             Id = 4,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8171),
                             Genre = "Romance",
                             Name = "Brown Coffee",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 6
+                            Stock = 0
                         },
                         new
                         {
                             Id = 5,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8181),
                             Genre = "Thriller",
                             Name = "Most Wanted",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 18
+                            Stock = 0
                         },
                         new
                         {
                             Id = 6,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8191),
                             Genre = "Thriller",
                             Name = "The Maze Runner",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 34
+                            Stock = 0
                         },
                         new
                         {
                             Id = 7,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8201),
                             Genre = "Scify",
                             Name = "Blade Runner",
                             Release = new DateTime(2017, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 68
+                            Stock = 0
                         },
                         new
                         {
                             Id = 8,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8211),
                             Genre = "Action",
                             Name = "13 Hours the Secret Soldier",
                             Release = new DateTime(2012, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 6
+                            Stock = 0
                         },
                         new
                         {
                             Id = 9,
-                            Added = new DateTime(2023, 1, 26, 8, 16, 41, 752, DateTimeKind.Local).AddTicks(8222),
                             Genre = "Action",
                             Name = "The Matrix Ressurection",
                             Release = new DateTime(1994, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Stock = 3
+                            Stock = 0
                         });
                 });
 
