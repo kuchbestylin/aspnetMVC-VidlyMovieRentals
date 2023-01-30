@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Data;
 
@@ -11,9 +12,11 @@ using Vidly.Data;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230126093910_addingGenreAsNullable")]
+    partial class addingGenreAsNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,48 +69,6 @@ namespace Vidly.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Action"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Adventure"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Comedy"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Drama"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Mystery"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Romance"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Scify"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Thriller"
-                        });
                 });
 
             modelBuilder.Entity("Vidly.Models.MembershipType", b =>
@@ -180,11 +141,10 @@ namespace Vidly.Migrations
 
                     b.Property<DateTime?>("Added")
                         .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -199,15 +159,14 @@ namespace Vidly.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
-
                     b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            GenreId = 6,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6615),
+                            Genre = "Romance",
                             Name = "A Perfect Match",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 5
@@ -215,7 +174,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 2,
-                            GenreId = 2,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6646),
+                            Genre = "Adventure",
                             Name = "Jumanji",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 4
@@ -223,7 +183,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 3,
-                            GenreId = 6,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6656),
+                            Genre = "Mistery",
                             Name = "A Resonable Doubt",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 55
@@ -231,7 +192,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 4,
-                            GenreId = 6,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6665),
+                            Genre = "Romance",
                             Name = "Brown Coffee",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 6
@@ -239,7 +201,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 5,
-                            GenreId = 1,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6675),
+                            Genre = "Thriller",
                             Name = "Most Wanted",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 18
@@ -247,7 +210,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 6,
-                            GenreId = 5,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6685),
+                            Genre = "Thriller",
                             Name = "The Maze Runner",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 34
@@ -255,7 +219,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 7,
-                            GenreId = 7,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6694),
+                            Genre = "Scify",
                             Name = "Blade Runner",
                             Release = new DateTime(2017, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 68
@@ -263,7 +228,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 8,
-                            GenreId = 1,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6704),
+                            Genre = "Action",
                             Name = "13 Hours the Secret Soldier",
                             Release = new DateTime(2012, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 6
@@ -271,7 +237,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 9,
-                            GenreId = 1,
+                            Added = new DateTime(2023, 1, 26, 11, 39, 10, 105, DateTimeKind.Local).AddTicks(6713),
+                            Genre = "Action",
                             Name = "The Matrix Ressurection",
                             Release = new DateTime(1994, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 3
@@ -287,17 +254,6 @@ namespace Vidly.Migrations
                         .IsRequired();
 
                     b.Navigation("MembershipType");
-                });
-
-            modelBuilder.Entity("Vidly.Models.Movie", b =>
-                {
-                    b.HasOne("Vidly.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
                 });
 #pragma warning restore 612, 618
         }

@@ -32,8 +32,13 @@ namespace Vidly
             app.UseAuthorization();
 
             app.MapControllerRoute(
+                name: "edit",
+                pattern: "{controller=movies}/edit/{id?}",
+                defaults: new { controller = "movies", action = "new" });
+
+            app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=home}/{action=index}/{id?}");
 
             app.Run();
         }

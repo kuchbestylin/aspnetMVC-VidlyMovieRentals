@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Vidly.Data;
+using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -13,19 +16,43 @@ namespace Vidly.Controllers
 
         public IActionResult Index()
         {
-            var movies = _dbContext.Movies.ToList();
+            var movies = _dbContext.Movies.Include(m => m.Genre).ToList();
             return View(movies);
         }
 
         public IActionResult Details(int id)
         {
-            var movie = _dbContext.Movies.FirstOrDefault(x => x.Id == id);
+            var movie = _dbContext.Movies.Include(m => m.Genre).FirstOrDefault(x => x.Id == id);
             return View(movie);
         }
 
-        public IActionResult New()
+        [HttpPost]
+        public IActionResult New(int? id)
         {
-            return View();
+            var viewModel = new MovieFormViewModel() { Genres = _dbContext.Genres.ToList() };
+            if (id != null)
+                viewModel.Movie = _dbContext.Movies.Include(m => m.Genre).Single(x => x.Id == id);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                _dbContext.Add(movie);
+            }
+            else
+            {
+                var movieInDatabase = _dbContext.Movies.Single(m => m.Id == movie.Id);
+                movieInDatabase.Name = movie.Name;
+                movieInDatabase.Release = movie.Release;
+                movieInDatabase.Stock = movie.Stock;
+                movieInDatabase.GenreId = movie.GenreId;
+            }
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Movies");
         }
     }
 }

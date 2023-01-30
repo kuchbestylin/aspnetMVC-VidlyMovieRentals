@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Data;
 
@@ -11,9 +12,11 @@ using Vidly.Data;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230126102806_addingGenreIdSeedAndGenreRelationToMovie")]
+    partial class addingGenreIdSeedAndGenreRelationToMovie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,7 +183,6 @@ namespace Vidly.Migrations
 
                     b.Property<DateTime?>("Added")
                         .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GenreId")
@@ -207,7 +209,8 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 1,
-                            GenreId = 6,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7320),
+                            GenreId = 5,
                             Name = "A Perfect Match",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Stock = 5
@@ -215,6 +218,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 2,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7361),
                             GenreId = 2,
                             Name = "Jumanji",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -223,6 +227,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 3,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7376),
                             GenreId = 6,
                             Name = "A Resonable Doubt",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -231,6 +236,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 4,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7391),
                             GenreId = 6,
                             Name = "Brown Coffee",
                             Release = new DateTime(2013, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -239,6 +245,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 5,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7405),
                             GenreId = 1,
                             Name = "Most Wanted",
                             Release = new DateTime(2016, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -247,6 +254,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 6,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7421),
                             GenreId = 5,
                             Name = "The Maze Runner",
                             Release = new DateTime(2018, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -255,6 +263,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 7,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7435),
                             GenreId = 7,
                             Name = "Blade Runner",
                             Release = new DateTime(2017, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -263,6 +272,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 8,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7449),
                             GenreId = 1,
                             Name = "13 Hours the Secret Soldier",
                             Release = new DateTime(2012, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -271,6 +281,7 @@ namespace Vidly.Migrations
                         new
                         {
                             Id = 9,
+                            Added = new DateTime(2023, 1, 26, 12, 28, 5, 766, DateTimeKind.Local).AddTicks(7463),
                             GenreId = 1,
                             Name = "The Matrix Ressurection",
                             Release = new DateTime(1994, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),

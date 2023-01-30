@@ -6,9 +6,9 @@
 
 <h1>@Model.Name</h1>
 <ul>
-    <li>Genre: @Model.Genre</li>
-    <li>Release: @String.Format("{0}, {1} {2}, {3}", Model.Release.Value.DayOfWeek, getMonth(Model.Release.Value.Month), Model.Release.Value.Day, Model.Release.Value.Year)</li>
-    <li>Date: @String.Format("{0}, {1} {2}, {3}", Model.Added.Value.DayOfWeek, getMonth(Model.Added.Value.Month), Model.Added.Value.Day, Model.Added.Value.Year)</li>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Release: @Model.Release.Value.ToLongDateString()</li>
+    <li>Date: @Model.Added.Value.ToLongDateString()</li>
     <li>Number in Stoke: @Model.Stock</li>
 </ul>
 
