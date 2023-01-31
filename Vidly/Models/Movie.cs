@@ -13,7 +13,6 @@ namespace Vidly.Models
         [Required]
         public DateTime? Release { get; set; }
 
-        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? Added { get; set; }
 
@@ -23,6 +22,6 @@ namespace Vidly.Models
 
         [ForeignKey("Genre")]
         public int GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
     }
 }

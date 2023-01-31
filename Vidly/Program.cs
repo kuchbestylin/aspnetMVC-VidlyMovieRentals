@@ -10,11 +10,26 @@ namespace Vidly
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(option =>
+            {
+                option.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters();
+
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddSwaggerGen();
+
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                });
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -34,6 +49,11 @@ namespace Vidly
             app.MapControllerRoute(
                 name: "edit",
                 pattern: "{controller=movies}/edit/{id?}",
+                defaults: new { controller = "movies", action = "new" });
+
+            app.MapControllerRoute(
+                name: "edit",
+                pattern: "{controller=movies}/new/{id?}",
                 defaults: new { controller = "movies", action = "new" });
 
             app.MapControllerRoute(
