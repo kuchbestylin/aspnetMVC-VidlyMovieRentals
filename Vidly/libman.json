@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jqueryui@1.13.2",
+      "destination": "wwwroot/jqueryui/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "@types/devexpress-web@202.5.1",
+      "destination": "wwwroot/lib/types/devexpress-web/"
+    }
+  ]
+}

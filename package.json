@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/devexpress-web": "^202.5.1"
+  }
+}

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AutoMapper;
+using System.ComponentModel.DataAnnotations;
+using Vidly.Dtos;
 
 namespace Vidly.Models
 {
@@ -6,7 +8,12 @@ namespace Vidly.Models
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            var customer = (Customer)validationContext.ObjectInstance;
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Customer, CustomerDto>();
+            });
+            Mapper _mapper = new(configuration);
+            var customer = ((Customer)validationContext.ObjectInstance);
             if (customer.MembershipTypeId == MembershipType.Unkown ||
                 customer.MembershipTypeId == MembershipType.PayAsYouGo)
                 return ValidationResult.Success;

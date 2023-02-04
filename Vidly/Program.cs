@@ -20,6 +20,8 @@ namespace Vidly
 
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -59,6 +61,7 @@ namespace Vidly
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=home}/{action=index}/{id?}");
+            app.UseNodeModules();
 
             app.Run();
         }
