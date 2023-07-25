@@ -10,6 +10,22 @@
       "provider": "jsdelivr",
       "library": "@types/devexpress-web@202.5.1",
       "destination": "wwwroot/lib/types/devexpress-web/"
+    },
+    {
+      "library": "bootbox.js@6.0.0",
+      "destination": "wwwroot/bootbox.js/"
+    },
+    {
+      "library": "datatables.net@2.1.1",
+      "destination": "wwwroot/datatables.net/"
+    },
+    {
+      "library": "datatable@2.0.2",
+      "destination": "wwwroot/datatable/"
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/datatables/"
     }
   ]
 }

@@ -64,7 +64,7 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpDelete]
-        public ActionResult<CustomerDto> DeleteCustomer(int id)
+        public ActionResult<CustomerDto> DeleteCustomer([FromBody] int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
